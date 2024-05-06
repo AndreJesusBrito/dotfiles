@@ -2,18 +2,38 @@
   description = "André's NixOS configs";
 
   inputs = {
-    # stable nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-
-    nixosConfigurations.Tesla = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-      ];
+  outputs = inputs@{
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    ...
+  }: {
+    nixosConfigurations = {
+      Tesla = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+  
+        specialArgs = {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+  	  pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        };
+  
+        modules = [
+          ./configuration.nix
+        ];
+      };
     };
 
   };
+
 }
