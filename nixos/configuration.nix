@@ -105,6 +105,8 @@
      neovim
      git
      htop
+
+     pass
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
