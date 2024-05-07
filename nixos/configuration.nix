@@ -91,6 +91,7 @@
       brave
       librewolf
       pkgs-unstable.freetube
+      gcc
     ];
   };
 
