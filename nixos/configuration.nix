@@ -92,6 +92,8 @@
       librewolf
       pkgs-unstable.freetube
       gcc
+      nodejs
+      fd
     ];
   };
 
