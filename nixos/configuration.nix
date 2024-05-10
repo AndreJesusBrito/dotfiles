@@ -94,6 +94,7 @@
       gcc
       nodejs
       fd
+      fzf
     ];
   };
 
