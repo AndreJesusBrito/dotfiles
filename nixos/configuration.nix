@@ -95,6 +95,7 @@
       nodejs
       fd
       fzf
+      ripgrep
     ];
   };
 
@@ -106,7 +107,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim
      git
      htop
 
@@ -119,6 +119,11 @@
   programs.gnupg.agent = {
     enable = true;
     # enableSSHSupport = true;
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
   };
 
   # List services that you want to enable:
