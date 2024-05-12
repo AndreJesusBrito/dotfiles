@@ -109,6 +109,7 @@
   environment.systemPackages = with pkgs; [
      git
      htop
+     lf
 
      pass
   ];
