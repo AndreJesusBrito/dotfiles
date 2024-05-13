@@ -110,6 +110,7 @@
      git
      htop
      lf
+     wl-clipboard
 
      pass
   ];
