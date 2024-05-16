@@ -97,6 +97,7 @@
     packages = with pkgs; [
       firefox
       brave
+      remmina
       librewolf
       pkgs-unstable.freetube
       gcc
