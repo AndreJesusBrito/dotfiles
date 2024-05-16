@@ -61,6 +61,14 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # necessary to the vpn to work
+  services.strongswan = {
+    enable = true;
+    secrets = [
+      "ipsec.d/ipsec.nm-l2tp.secrets"
+    ];
+  };
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -111,6 +119,8 @@
      htop
      lf
      wl-clipboard
+     networkmanager-l2tp
+     gnome.networkmanager-l2tp
 
      pass
   ];
