@@ -123,7 +123,7 @@
      networkmanager-l2tp
      gnome.networkmanager-l2tp
 
-     pass
+     (pass.withExtensions (exts: [ exts.pass-otp ]))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
