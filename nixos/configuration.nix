@@ -123,6 +123,8 @@
      networkmanager-l2tp
      gnome.networkmanager-l2tp
 
+     ntfs3g
+
      (pass.withExtensions (exts: [ exts.pass-otp ]))
   ];
 
