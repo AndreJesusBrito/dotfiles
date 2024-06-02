@@ -121,6 +121,7 @@
      lf
      wl-clipboard
      networkmanager-l2tp
+     home-manager
      gnome.networkmanager-l2tp
 
      ntfs3g
