@@ -11,28 +11,57 @@
     nixpkgs,
     nixpkgs-unstable,
     ...
-  }: {
-    nixosConfigurations = {
-      Tesla = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-  
+  }:
+  let
+    system-type = {
+      amd64-linux = "x86_64-linux";
+    };
+
+    sources = {
+
+      nixpkgs-stable = system: import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      nixpkgs-unstable = system: import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+    };
+
+    useSource = system: source: source system;
+    useSources = system: sources:
+      builtins.mapAttrs (name: value: useSource system value) sources;
+
+    createHost = { system ? system-type.amd64-linux, main-source ? sources.nixpkgs-stable, extra-sources ? [], modules }:
+      nixpkgs.lib.nixosSystem {
+        inherit system modules;
+
         specialArgs = {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-  	  pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          pkgs = useSource system main-source;
+          extra-pkgs = useSources system extra-sources;
         };
-  
+      };
+
+  in {
+    nixosConfigurations = {
+
+      # my main desktop
+      "Tesla" = createHost {
+        extra-sources = {
+          inherit (sources)
+            nixpkgs-unstable
+          ;
+        };
+        # extra-sources = repos;
         modules = [
           ./configuration.nix
         ];
       };
-    };
 
+    };
   };
 
 }

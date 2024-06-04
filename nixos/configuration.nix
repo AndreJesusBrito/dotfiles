@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, extra-pkgs, ... }:
 
 {
   imports =
@@ -99,7 +99,7 @@
       brave
       remmina
       librewolf
-      pkgs-unstable.freetube
+      extra-pkgs.nixpkgs-unstable.freetube
       gcc
       nodejs
       fd
