@@ -42,6 +42,7 @@
         specialArgs = {
           pkgs = useSource system main-source;
           extra-pkgs = useSources system extra-sources;
+          inherit inputs;
         };
       };
 

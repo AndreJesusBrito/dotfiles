@@ -2,13 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, extra-pkgs, ... }:
+{ config, pkgs, extra-pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+    dates = "13:00";
+    randomizedDelaySec = "15min";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
