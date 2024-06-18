@@ -118,6 +118,7 @@
       fd
       fzf
       ripgrep
+      fastfetch
     ];
   };
 
