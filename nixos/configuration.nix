@@ -119,6 +119,7 @@
       fzf
       ripgrep
       fastfetch
+      traceroute
 
       libreoffice-qt
       hunspell
