@@ -112,7 +112,7 @@
       brave
       remmina
       librewolf
-      extra-pkgs.nixpkgs-unstable.freetube
+      extra-pkgs.nixpkgs-master.freetube
       gcc
       nodejs
       fd

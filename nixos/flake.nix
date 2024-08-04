@@ -4,12 +4,14 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
   };
 
   outputs = inputs@{
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nixpkgs-master,
     ...
   }:
   let
@@ -27,6 +29,11 @@
       nixpkgs-unstable = system: import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
+      };
+
+      nixpkgs-master = system: import nixpkgs-master {
+        inherit system;
+        config.allowUnfree = false;
       };
 
     };
@@ -54,6 +61,7 @@
         extra-sources = {
           inherit (sources)
             nixpkgs-unstable
+            nixpkgs-master
           ;
         };
         # extra-sources = repos;
