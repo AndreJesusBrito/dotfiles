@@ -120,6 +120,7 @@
       ripgrep
       fastfetch
       traceroute
+      texlive.combined.scheme-full
 
       libreoffice-qt
       hunspell
