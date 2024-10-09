@@ -10,18 +10,18 @@
       ./hardware-configuration.nix
     ];
 
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = false;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "13:00";
-    randomizedDelaySec = "15min";
-  };
+#   system.autoUpgrade = {
+#     enable = true;
+#     allowReboot = false;
+#     flake = inputs.self.outPath;
+#     flags = [
+#       "--update-input"
+#       "nixpkgs"
+#       "-L" # print build logs
+#     ];
+#     dates = "13:00";
+#     randomizedDelaySec = "15min";
+#   };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
