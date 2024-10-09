@@ -126,6 +126,9 @@
       hunspell
       hunspellDicts.en_US
       hunspellDicts.pt_PT
+
+      imagemagick
+      ghostscript
     ];
   };
 
